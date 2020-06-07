@@ -225,6 +225,9 @@ class BookController extends Controller
         if($book['is_public'] == false && $userId != $book['user_id']) abort(401);
 
         $book['rate'] = $this->calculateBookRating($book['id']);
+        $myRating = $this->findBookRating($book['id'], $userId);
+
+        $book['my_rating'] = $myRating == null ? 0 : $myRating['rate'];
 
         return view('book-detail', compact('book'));
     }
@@ -242,7 +245,7 @@ class BookController extends Controller
     }
 
     public function findBookRating($bookId, $userId) {
-        return BookRating::where("id", $bookId)->where("user_id", $userId)->first();
+        return BookRating::where("book_id", $bookId)->where("user_id", $userId)->first();
     }
 
     public function updateRateBook($bookId, $userId, $rate) {

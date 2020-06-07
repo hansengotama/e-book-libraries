@@ -51,7 +51,7 @@ Route::get('/user/find/{id}', 'UserController@find');
 Route::post('/user/update/{id}', 'UserController@update');
 Route::get('/user/delete/{id}', 'UserController@delete');
 Route::post('/user/edit-password', 'UserController@editPassword')->name("edit-password");
-Route::post('/edit-profile', 'BookController@editProfile')->name('edit-profile');
+Route::post('/edit-profile', 'UserController@editProfile')->name('edit-profile');
 
 Route::get('/book', 'BookController@get');
 Route::post('/book/create', 'BookController@create');

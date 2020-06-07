@@ -148,11 +148,11 @@
                     <div>
                         @if(\Illuminate\Support\Facades\Auth::check())
                             <div class="stars-container">
-                                <i class="fa fa-star @if($book["rate"] >= 1) active @endif" onclick="rateBook(1)"></i>
-                                <i class="fa fa-star @if($book["rate"] >= 2) active @endif" onclick="rateBook(2)"></i>
-                                <i class="fa fa-star @if($book["rate"] >= 3) active @endif" onclick="rateBook(3)"></i>
-                                <i class="fa fa-star @if($book["rate"] >= 4) active @endif" onclick="rateBook(4)"></i>
-                                <i class="fa fa-star @if($book["rate"] == 5) active @endif" onclick="rateBook(5)"></i>
+                                <i class="fa fa-star @if($book["my_rating"] >= 1) active @endif" onclick="rateBook(1)"></i>
+                                <i class="fa fa-star @if($book["my_rating"] >= 2) active @endif" onclick="rateBook(2)"></i>
+                                <i class="fa fa-star @if($book["my_rating"] >= 3) active @endif" onclick="rateBook(3)"></i>
+                                <i class="fa fa-star @if($book["my_rating"] >= 4) active @endif" onclick="rateBook(4)"></i>
+                                <i class="fa fa-star @if($book["my_rating"] == 5) active @endif" onclick="rateBook(5)"></i>
                             </div>
                         @else
                             <div class="stars-container red">Please login to rate this book</div>
@@ -191,7 +191,11 @@
                             <div class="view-comments">
                                 <div class="comment-container">
                                     <div class="image">
-                                        <img src="{{ asset("/book/Hansen-5-cover-DSC_0047.JPG") }}" width="50px" height="50px" style="border-radius: 50%">
+                                        @if($datum['user']['image_url'] != null)
+                                            <img src="{{ asset($datum['user']['image_url']) }}" width="50px" height="50px" style="border-radius: 50%">
+                                        @else
+                                            <img src="{{ asset("default-profile.png") }}" width="50px" height="50px" style="border-radius: 50%">
+                                        @endif
                                     </div>
                                     <div class="comment-info">
                                         <div class="profile-info">
