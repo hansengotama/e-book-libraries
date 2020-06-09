@@ -139,7 +139,7 @@
                             </div>
                             @endif
                         </div>
-                        <small>created by: {{ $book['user']['name'] }} - {{ $book['user']['classRoom']['name'] }}</small>
+                        <small>created by: {{ $book['user']['name'] }} @if($book['user']['classRoom'] != null) - {{ $book['user']['classRoom']['name'] }} @endif</small>
                         <div class="book-container-body">
                             <img src="{{ asset($book['cover_url']) }}" height="250px">
                             <div class="button-container">

@@ -106,6 +106,7 @@
                                 <td>{{ $key+1 }}</td>
                                 <td>{{ $classroom['name'] }}</td>
                                 <td>
+                                    <a class="view" onclick="viewClassroom({{ $classroom['id'] }})" style="background: #a5a5a5;"><i class="fa fa-eye"></i> Student</a>
                                     <a class="edit" onclick="editClassroom({{$classroom}})">Edit</a>
                                     <a class="delete" onclick="deleteConfirmation({{ $classroom['id'] }})">Delete</a>
                                 </td>
@@ -203,6 +204,7 @@
 
 @section('script')
     <script type="text/javascript">
+        let baseUrl = window.location.origin
         let selectedClassRoom = null
 
         $(() => {
@@ -286,6 +288,10 @@
             let search = $("#search").val()
 
             location.href = "?name="+search
+        }
+
+        function viewClassroom(id) {
+            window.location = baseUrl + "/view-class/" + id
         }
     </script>
 @endsection

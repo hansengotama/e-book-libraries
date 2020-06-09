@@ -32,6 +32,8 @@ Route::middleware([Authenticate::class])->group(function () {
     Route::post('/edit-my-book-action/{id}', 'BookController@editMyBookAction')->name('edit-my-book-action');
     Route::get('/manage-profile', 'UserController@manageProfile')->name('manage-profile');
 
+    Route::get('/view-my-class', 'ClassRoomController@viewMyClass')->name('view-my-class');
+    Route::get('/view-class/{id}', 'ClassRoomController@viewClassById')->name('view-class');
 });
 
 Route::get( '/download-file/{any}', function($url){

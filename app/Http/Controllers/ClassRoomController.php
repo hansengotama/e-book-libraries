@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\ClassRoom;
+use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ClassRoomController extends Controller
 {
@@ -71,5 +73,22 @@ class ClassRoomController extends Controller
         $classRoom->delete();
 
         return redirect()->back();
+    }
+
+    public function viewMyClass()
+    {
+        $classRoomId = Auth::user()->class_room_id;
+
+        $classRoomUser = User::where('class_room_id', $classRoomId)->get();
+
+        return view('user.my-class', compact('classRoomUser'));
+    }
+
+    public function viewClassById($id)
+    {
+        $classroom = $this->find($id);
+        $classRoomUser = User::where('class_room_id', $id)->get();
+
+        return view('admin.class-student', compact('classRoomUser', 'classroom'));
     }
 }

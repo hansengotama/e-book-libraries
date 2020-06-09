@@ -91,11 +91,17 @@
 
                 @elseif(\Illuminate\Support\Facades\Auth::user()->role == "user")
                     <div class="submenu">
-                        <a href="{{ route('manage-my-book') }}">
-                            <span class="{{ (\Request::route()->getName() == "manage-my-book") ? "active" : "" }}">My Book</span>
+                        <a href="{{ route('view-my-class') }}">
+                            <span class="{{ (\Request::route()->getName() == "view-my-class") ? "active" : "" }}">My Class</span>
                         </a>
                     </div>
                 @endif
+
+                <div class="submenu">
+                    <a href="{{ route('manage-my-book') }}">
+                        <span class="{{ (\Request::route()->getName() == "manage-my-book") ? "active" : "" }}">My Book</span>
+                    </a>
+                </div>
 
                 <div class="submenu">
                     <a href="{{ route('manage-profile') }}">

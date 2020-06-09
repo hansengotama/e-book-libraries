@@ -162,7 +162,7 @@
                     </div>
                 </div>
                 <div class="">
-                    <small>created by: {{ $book['user']['name'] }} - {{ $book['user']['classRoom']['name'] }}</small>
+                    <small>created by: {{ $book['user']['name'] }} @if($book['user']['classRoom'] != null) - {{ $book['user']['classRoom']['name'] }} @endif</small>
                 </div>
                 <div class="description-container">
                     {{ $book['description'] }}
