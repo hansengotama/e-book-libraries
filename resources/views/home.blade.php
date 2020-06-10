@@ -64,6 +64,12 @@
             border-bottom-right-radius: 5px;
         }
 
+        .home-container > .books-container > .custom-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-gap: 1em;
+        }
+
         .home-container > .books-container > .custom-container > .book-container {
             margin-bottom: 20px;
         }
@@ -128,6 +134,37 @@
             text-indent: 6px;
         }
 
+        @media (max-width: 1600px) {
+            .home-container > .books-container {
+                flex: 3;
+            }
+        }
+
+        @media (max-width: 1450px) {
+            .home-container {
+                flex-direction: column-reverse;
+            }
+
+            .home-container > .filter-book-container {
+                position: unset;
+                margin-bottom: 1em;
+            }
+
+            .home-container > .books-container {
+                margin-right: 0;
+            }
+
+            .home-container > .filter-book-container > .title {
+                height: auto;
+            }
+        }
+
+        @media (max-width: 1000px) {
+            .home-container > .books-container > .custom-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
 
     </style>
 @endsection
@@ -160,10 +197,10 @@
                             </div>
                             <small>created by: {{ $book['user']['name'] }} @if($book['user']['classRoom'] != null) - {{ $book['user']['classRoom']['name'] }} @endif</small>
                             <div class="book-container-body">
-                                <img src="{{ asset($book['cover_url']) }}" height="250px">
+                                <img src="{{ asset($book['cover_url']) }}" height="200px">
                                 <div class="button-container">
-                                    <button class="button-download" onclick="download('{{ $book["file_url"] }}')">Download</button>
-                                    <button class="button-detail" onclick="viewDetail('{{ $book["id"] }}')">Detail</button>
+                                    <button class="button-download" onclick="download('{{ $book["file_url"] }}')"><i class="fa fa-download"></i></button>
+                                    <button class="button-detail" onclick="viewDetail('{{ $book["id"] }}')"><i class="fa fa-eye"></i></button>
                                 </div>
                             </div>
                         </div>
