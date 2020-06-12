@@ -41,7 +41,7 @@ class ViewController extends Controller
         $bookTypeId = $request->get('book_type_id') == "null" ? null : $request->get('book_type_id');
 
         $title = $request->get('title');
-        $users = $this->userController->getAll($classId, "user");
+        $users = $this->userController->getAll($classId, null);
         $books = $this->bookController->getAll($bookTypeId, $classId, $userId, true, $title);
 
         return view('home', compact('classrooms', 'bookTypes', 'users', 'books', 'bookTypeId', 'classId', 'userId', 'title'));

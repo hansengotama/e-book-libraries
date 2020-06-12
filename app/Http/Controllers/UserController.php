@@ -33,7 +33,7 @@ class UserController extends Controller
         );
     }
 
-    public function getAll(?int $classId, string $role)
+    public function getAll(?int $classId, ?string $role)
     {
         $users = User::query();
         if($classId != null)
@@ -136,11 +136,11 @@ class UserController extends Controller
             'class_room_id' => $request['edit_class_room_id'],
             'name' => $request['edit_name'],
             'email' => $request['edit_email'],
-            'password' => $request['edit_password'],
+            'password' => $user['password'],
             'role' => $role,
             'gender' => $request['edit_gender'],
             'address' => $request['edit_address'],
-            'image_url' => $request['edit_image_url'],
+            'image_url' => $user['image_url'],
             'date_of_birth' => $request['edit_date_of_birth'],
         ]);
 

@@ -144,7 +144,9 @@
                 </div>
                 <hr>
                 <div class="body-container">
-                    <img src="{{ asset($book['cover_url']) }}" width="50%">
+                    <a href="{{ asset($book['cover_url']) }}" target="_blank">
+                        <img src="{{ asset($book['cover_url']) }}" width="300px" style="cursor: pointer">
+                    </a>
                     <div>
                         @if(\Illuminate\Support\Facades\Auth::check())
                             <div class="stars-container">
