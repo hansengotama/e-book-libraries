@@ -58,8 +58,10 @@
             border-bottom-right-radius: 5px;
         }
 
-        .my-book-container > .books-container > .custom-container > .book-container {
-            margin-bottom: 20px;
+        .my-book-container > .books-container > .custom-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1.5em;
         }
 
         .my-book-container > .books-container > .custom-container > .book-container {
@@ -107,6 +109,24 @@
         .my-book-container > .books-container > .custom-container > .book-container > .book-container-header > .star-container > i.active {
             color: #f8c94e;
         }
+
+
+        @media (max-width: 1500px) {
+            .my-book-container > .books-container > .custom-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                grid-gap: 1.5em;
+            }
+        }
+
+
+        @media (max-width: 980px) {
+            .my-book-container > .books-container > .custom-container {
+                display: grid;
+                grid-template-columns: 1fr;
+                grid-gap: 1.5em;
+            }
+        }
     </style>
 @endsection
 
@@ -141,10 +161,10 @@
                         </div>
                         <small>created by: {{ $book['user']['name'] }} @if($book['user']['classRoom'] != null) - {{ $book['user']['classRoom']['name'] }} @endif</small>
                         <div class="book-container-body">
-                            <img src="{{ asset($book['cover_url']) }}" height="250px">
+                            <img src="{{ asset($book['cover_url']) }}" height="200px">
                             <div class="button-container">
-                                <button class="button-download" onclick="edit('{{ $book["id"] }}')">Edit</button>
-                                <button class="button-detail" onclick="viewDetail('{{ $book["id"] }}')">Detail</button>
+                                <button class="button-download" onclick="edit('{{ $book["id"] }}')"><i class="fa fa-download"></i></button>
+                                <button class="button-detail" onclick="viewDetail('{{ $book["id"] }}')"><i class="fa fa-eye"></i></button>
                             </div>
                         </div>
                     </div>
