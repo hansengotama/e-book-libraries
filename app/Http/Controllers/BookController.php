@@ -201,7 +201,37 @@ class BookController extends Controller
 
         $book->delete();
 
-        return;
+        return redirect()->back();
+    }
+
+    public function deleteBook($id)
+    {
+        if(Auth::user()->role != "admin") abort(401);
+
+        $book = $this->find($id);
+
+        if($book == null) abort(404);
+        $book->delete();
+
+        return redirect()->back();
+    }
+
+    public function setBookPrivate($id) {
+        if(Auth::user()->role != "admin") abort(401);
+
+        $book = $this->find($id);
+
+        $book->update([
+            'user_id' => $book['user_id'],
+            'book_type_id' => $book['book_type_id'],
+            'title' => $book['title'],
+            'description' => $book['description'],
+            'cover_url' => $book['cover_url'],
+            'file_url' => $book['file_url'],
+            'is_public' => false,
+        ]);
+
+        return redirect()->back();
     }
 
     public function get()

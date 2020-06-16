@@ -94,10 +94,17 @@
             border-radius: 5px;
         }
 
-        .my-book-container > .books-container > .custom-container > .book-container > .book-container-body > .button-container > .button-download {
+        .my-book-container > .books-container > .custom-container > .book-container > .book-container-body > .button-container > .button-edit {
             padding: 6px 8px;
             margin-bottom: 10px;
             background: #eaeaea;
+            border-radius: 5px;
+        }
+
+        .my-book-container > .books-container > .custom-container > .book-container > .book-container-body > .button-container > .button-delete {
+            padding: 6px 8px;
+            margin-bottom: 10px;
+            background: red;
             border-radius: 5px;
         }
 
@@ -109,7 +116,6 @@
         .my-book-container > .books-container > .custom-container > .book-container > .book-container-header > .star-container > i.active {
             color: #f8c94e;
         }
-
 
         @media (max-width: 1500px) {
             .my-book-container > .books-container > .custom-container {
@@ -163,8 +169,9 @@
                         <div class="book-container-body">
                             <img src="{{ asset($book['cover_url']) }}" height="200px">
                             <div class="button-container">
-                                <button class="button-download" onclick="edit('{{ $book["id"] }}')"><i class="fa fa-download"></i></button>
                                 <button class="button-detail" onclick="viewDetail('{{ $book["id"] }}')"><i class="fa fa-eye"></i></button>
+                                <button class="button-edit" style="margin-top: 8px" onclick="edit('{{ $book["id"] }}')"><i class="fa fa-edit"></i></button>
+                                <button class="button-delete" onclick="deleteBook('{{ $book["id"] }}')"><i class="fa fa-trash" style="color: white"></i></button>
                             </div>
                         </div>
                     </div>
@@ -214,6 +221,20 @@
                     this.search()
                 }
             })
+        }
+
+        function deleteBook(id) {
+            swal({
+                title: "Are you sure?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = baseUrl + "/delete-my-book/" + id
+                }
+            });
         }
 
         function search() {

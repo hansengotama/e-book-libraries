@@ -111,6 +111,20 @@
             border-radius: 5px;
         }
 
+        .home-container > .books-container > .custom-container > .book-container > .book-container-body > .button-container > .button-set-private {
+            padding: 6px 8px;
+            margin-bottom: 10px;
+            background: orange;
+            border-radius: 5px;
+        }
+
+        .home-container > .books-container > .custom-container > .book-container > .book-container-body > .button-container > .button-delete {
+            padding: 6px 8px;
+            margin-bottom: 10px;
+            background: red;
+            border-radius: 5px;
+        }
+
         .home-container > .books-container > .custom-container > .book-container > .book-container-header > .title {
             text-transform: uppercase;
             font-weight: 500;
@@ -201,6 +215,10 @@
                                 <div class="button-container">
                                     <button class="button-download" onclick="download('{{ $book["file_url"] }}')"><i class="fa fa-download"></i></button>
                                     <button class="button-detail" onclick="viewDetail('{{ $book["id"] }}')"><i class="fa fa-eye"></i></button>
+                                    @if(\Illuminate\Support\Facades\Auth::user() && \Illuminate\Support\Facades\Auth::user()->role == "admin")
+                                    <button class="button-set-private" style="margin-top: 8px" onclick="setPrivateBook('{{ $book["id"] }}')"><i class="fa fa-key" style="color: white"></i></button>
+                                    <button class="button-delete" onclick="deleteBook('{{ $book["id"] }}')"><i class="fa fa-trash" style="color: white"></i></button>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -296,6 +314,34 @@
 
         function viewDetail(id) {
             window.location = baseUrl + "/book-detail/" + id
+        }
+
+        function setPrivateBook(id) {
+            swal({
+                title: "Are you sure?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willSetPrivate) => {
+                if (willSetPrivate) {
+                    window.location = baseUrl + "/set-book-private/" + id
+                }
+            });
+        }
+
+        function deleteBook(id) {
+            swal({
+                title: "Are you sure?",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+            })
+            .then((willDelete) => {
+                if (willDelete) {
+                    window.location = baseUrl + "/delete-book/" + id
+                }
+            });
         }
     </script>
 @endsection

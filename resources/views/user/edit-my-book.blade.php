@@ -70,7 +70,7 @@
             <div class="form-container">
                 <div class="header-container">
                     <div class="title">
-                        ADD BOOK
+                        EDIT BOOK
                     </div>
                     <div class="button-container">
                         <button onclick="goToViewMyBook()">View My Book</button>

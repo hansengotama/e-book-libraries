@@ -23,12 +23,15 @@ Route::middleware([Authenticate::class])->group(function () {
         Route::get('/manage-user', 'UserController@manageUser')->name('manage-user');
         Route::get('/manage-book-type', 'BookTypeController@manageBookType')->name('manage-book-type');
         Route::get('/manage-classroom', 'ClassRoomController@manageClassroom')->name('manage-classroom');
+        Route::get('/delete-book/{id}', 'BookController@deleteBook')->name('delete-book');
+        Route::get('/set-book-private/{id}', 'BookController@setBookPrivate')->name('set-book-private');
     });
 
     Route::get('/manage-my-book', 'BookController@manageMyBook')->name('manage-my-book');
     Route::get('/add-my-book', 'BookController@addMyBook')->name('add-my-book');
     Route::post('/add-my-book-action', 'BookController@addMyBookAction')->name('add-my-book');
     Route::get('/edit-my-book/{id}', 'BookController@editMyBook')->name('edit-my-book');
+    Route::get('/delete-my-book/{id}', 'BookController@deleteMyBook')->name('delete-my-book');
     Route::post('/edit-my-book-action/{id}', 'BookController@editMyBookAction')->name('edit-my-book-action');
     Route::get('/manage-profile', 'UserController@manageProfile')->name('manage-profile');
 
