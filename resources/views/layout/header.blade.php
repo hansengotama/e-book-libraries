@@ -45,6 +45,7 @@
         border-radius: 3px;
         color: white;
     }
+
 </style>
 
 <div id="header">
@@ -53,7 +54,7 @@
             <img src="{{ asset("logo.png") }}" alt="logo" height="40px">
             E-Book Libraries
         </div>
-        <div class="menu">
+        <div class="menu" style="position: relative">
             @if(! \Illuminate\Support\Facades\Auth::check())
                 <div class="submenu">
                     <a href="{{ route('home') }}">
@@ -103,16 +104,25 @@
                     </a>
                 </div>
 
-                <div class="submenu">
-                    <a href="{{ route('manage-profile') }}">
-                        <span class="{{ (\Request::route()->getName() == "manage-profile") ? "active" : "" }}">Profile</span>
+
+                <div class="submenu" onclick="toggleDropdown()">
+                    <a>
+                        <span>{{ \Illuminate\Support\Facades\Auth::user()->name }} <i class="fa fa-angle-down"></i></span>
                     </a>
                 </div>
-                <div class="submenu">
-                    <a href="{{ route('logout-action') }}">
-                        <span>Logout</span>
-                    </a>
+                <div style="position: absolute; top: 40px; right: 0; background: white; padding: 10px 20px; box-shadow: 5px 5px 2px 0 rgba(0,0,0,0.10); display: none; z-index: 9999" id="menu-profile">
+                    <div class="submenu" style="margin-bottom: 20px; margin-top: 10px">
+                        <a href="{{ route('manage-profile') }}">
+                            <span class="{{ (\Request::route()->getName() == "manage-profile") ? "active" : "" }}" style="text-decoration: none; color: black;">Profile</span>
+                        </a>
+                    </div>
+                    <div class="submenu">
+                        <a href="{{ route('logout-action') }}">
+                            <span class="{{ (\Request::route()->getName() == "manage-profile") ? "active" : "" }}" style="text-decoration: none; color: black;">Logout</span>
+                        </a>
+                    </div>
                 </div>
+
             @endif
         </div>
     </div>

@@ -164,6 +164,7 @@
                     </div>
                 </div>
                 <div class="">
+                    <small style="display: block; margin-top: 7px">{{ \Carbon\Carbon::parse($book['created_at'])->format("d M Y") }}</small>
                     <small>created by: {{ $book['user']['name'] }} @if($book['user']['classRoom'] != null) - {{ $book['user']['classRoom']['name'] }} @endif</small>
                 </div>
                 <div class="description-container">

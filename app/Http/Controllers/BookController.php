@@ -19,6 +19,8 @@ class BookController extends Controller
         $this->bookTypeController = $bookTypeController;
     }
 
+
+
     public function manageMyBook(Request $request)
     {
         $userId = Auth::user()->id;

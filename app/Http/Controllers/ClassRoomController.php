@@ -80,8 +80,9 @@ class ClassRoomController extends Controller
         $classRoomId = Auth::user()->class_room_id;
 
         $classRoomUser = User::where('class_room_id', $classRoomId)->get();
+        $class = ClassRoom::where('id', $classRoomId)->first();
 
-        return view('user.my-class', compact('classRoomUser'));
+        return view('user.my-class', compact('classRoomUser', 'class'));
     }
 
     public function viewClassById($id)

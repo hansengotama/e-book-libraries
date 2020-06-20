@@ -2,14 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\BookType;
 use Illuminate\Http\Request;
 
 class BookTypeController extends Controller
 {
+    public function countBookFromBookTypeId(int $bookTypeId) {
+        return Book::where("book_type_id", $bookTypeId)->count();
+    }
+
     public function manageBookType(Request $request) {
         $filterName = $request['name'];
         $bookTypes = $this->get($filterName);
+        for($i = 0; $i < $bookTypes->count(); $i++) {
+            $bookTypes[$i]['count'] = $this->countBookFromBookTypeId($bookTypes[$i]['id']);
+        }
 
         return view('admin.book-type', compact('bookTypes', 'filterName'));
     }

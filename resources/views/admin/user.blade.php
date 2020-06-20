@@ -111,6 +111,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Name</th>
+                            <th>Class</th>
                             <th>Email</th>
                             <th>Gender</th>
                             <th>Action</th>
@@ -126,6 +127,7 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $user['name'] }}</td>
+                                    <td>{{ $user['classRoom']['name'] }}</td>
                                     <td>{{ $user['email'] }}</td>
                                     <td>{{ $user['gender'] }}</td>
                                     <td>

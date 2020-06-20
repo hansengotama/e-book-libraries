@@ -92,6 +92,7 @@
                         <tr>
                             <th>No.</th>
                             <th>Name</th>
+                            <th>Total Posted</th>
                             <th>Action</th>
                         </tr>
                         <thead>
@@ -105,6 +106,7 @@
                                 <tr>
                                     <td>{{ $key+1 }}</td>
                                     <td>{{ $bookType['name'] }}</td>
+                                    <td>{{ $bookType['count'] }}</td>
                                     <td>
                                         <a class="edit" onclick="editClassroom({{ $bookType }})">Edit</a>
                                         <a class="delete" onclick="deleteConfirmation({{ $bookType['id'] }})">Delete</a>

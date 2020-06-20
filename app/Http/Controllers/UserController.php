@@ -58,7 +58,7 @@ class UserController extends Controller
         if($name != null)
             $user = $user->where('name', 'LIKE', '%'. $name . '%');
 
-        return $user->paginate(10);
+        return $user->with("classRoom")->paginate(10);
     }
 
     public function create(Request $request)

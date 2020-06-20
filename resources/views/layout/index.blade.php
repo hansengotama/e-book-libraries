@@ -128,6 +128,18 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script type="text/javascript">
+    let showDropdown = false
+
+    function toggleDropdown() {
+        showDropdown = !showDropdown
+        if(showDropdown) {
+            $("#menu-profile").css("display", "block")
+        }else {
+            $("#menu-profile").css("display", "none")
+        }
+    }
+</script>
 @yield('script')
 </body>
 </html>

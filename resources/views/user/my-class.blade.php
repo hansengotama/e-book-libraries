@@ -85,7 +85,7 @@
             <div class="custom-container">
                 <div class="header-container">
                     <div class="title">
-                        MY CLASS
+                        {{ $class['name'] }}
                     </div>
                 </div>
                 <hr>
